@@ -14,11 +14,7 @@ app.post('/chat',async (req,res)=>{
     const question = req.body.question;
     const schema = await groupColumnsBySchemaAndTable();
     const response = await main(question,JSON.stringify(schema));
-    if(!response){
-        return res.status(500).json({
-            message: "Server Busy! "
-        })
-    }
+    
     const text=/```sql\n([\s\S]*?)\n```/
     const match = response.match(text);
     if (match) {
@@ -26,6 +22,12 @@ app.post('/chat',async (req,res)=>{
         console.log(sqlQuery);
         pool.query(sqlQuery)
             .then((result) => {
+                if(result.rowCount === 0) {
+                    return res.status(404).json({
+                        status: "error",
+                        message: "No data found!",
+                    });
+                }
                 res.json({
                     data: result.rows,
                 });
@@ -34,7 +36,7 @@ app.post('/chat',async (req,res)=>{
                 console.error("Error executing query", error);
                 res.status(500).json({
                     status: "error",
-                    message: "Error executing query",
+                    message: "Server Busy!",
                 });
             });
       } else {

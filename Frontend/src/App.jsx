@@ -2,6 +2,7 @@ import { useState } from 'react';
 import DraggableButton from './Components/Button';
 import ChatbotWidget from './Components/Chatbot';
 import './App.css';
+import background_image from './background.jpeg';
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -9,6 +10,7 @@ function App() {
 
   return (
     <>
+    <img src={background_image} className='w-full h-screen'/>
       {open && (
         <div
           style={{
