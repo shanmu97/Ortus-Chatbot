@@ -53,7 +53,7 @@ export default function ChatbotWidget({ onClose }) {
 
   return (
     <div
-      className="fixed bottom-24 right-8 w-[350px] h-[500px] bg-white rounded-xl shadow-2xl flex flex-col z-[1001] border"
+      className="fixed bottom-24 right-8 w-[300px] h-[400px] bg-white rounded-xl shadow-2xl flex flex-col z-[1001] border text-xs"
       style={{ minWidth: 300 }}
     >
       <div className="flex justify-between items-center px-4 py-3 border-b">
@@ -115,7 +115,7 @@ export default function ChatbotWidget({ onClose }) {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="flex items-center px-3 py-2 border-t"
+        className="flex items-center px-1.5 py-2 border-t"
       >
         <input
           type="text"
@@ -123,11 +123,11 @@ export default function ChatbotWidget({ onClose }) {
           value={question}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          className="flex-1 border border-gray-300 rounded-l-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 border border-gray-300 rounded-l-md px-1 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
           type="submit"
-          className="group inline-flex items-center justify-center w-12 h-10 bg-gradient-to-r bg-blue-700 text-white shadow-lg hover:shadow-xl transition-shadow duration-300"
+          className="group inline-flex items-center justify-center w-10 h-8 bg-gradient-to-r bg-blue-700 text-white shadow-lg hover:shadow-xl transition-shadow duration-300"
           aria-label="Send"
         >
           <svg
